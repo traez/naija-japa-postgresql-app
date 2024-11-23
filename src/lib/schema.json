@@ -1,0 +1,166 @@
+{
+  "id": 660605,
+  "num_rows": 500,
+  "file_format": "json",
+  "name": "uk",
+  "array": true,
+  "columns": [
+    {
+      "name": "user_id",
+      "null_percentage": 0,
+      "type": "NHS Number",
+      "formula": null
+    },
+    {
+      "name": "first_name",
+      "null_percentage": 0,
+      "type": "First Name",
+      "formula": null
+    },
+    {
+      "name": "last_name",
+      "null_percentage": 0,
+      "type": "Last Name",
+      "formula": null
+    },
+    {
+      "name": "age",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 18,
+      "max": 60,
+      "decimals": 0,
+      "formula": null
+    },
+    {
+      "name": "sex",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "male",
+        "female"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    },
+    {
+      "name": "marital_status",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "Single",
+        "Married",
+        "Divorced",
+        "Widowed"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    },
+    {
+      "name": "number_of_children",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 0,
+      "max": 6,
+      "decimals": 0,
+      "formula": null
+    },
+    {
+      "name": "languages_spoken",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "Hausa",
+        "Yoruba",
+        "Igbo",
+        "Fulfulde",
+        "Kanuri",
+        "Ijaw",
+        "Tiv",
+        "Efik",
+        "Ibibio",
+        "Edo",
+        "Nupe",
+        "Urhobo",
+        "Isoko",
+        "Igala",
+        "Ebira",
+        "Idoma",
+        "Itsekiri",
+        "Gwari",
+        "Annang",
+        "Jukun"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    },
+    {
+      "name": "religion",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "Christianity",
+        "Islam",
+        "Traditional",
+        "Secular"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    },
+    {
+      "name": "japa_year",
+      "null_percentage": 0,
+      "type": "Number",
+      "min": 1982,
+      "max": 2024,
+      "decimals": 0,
+      "formula": null
+    },
+    {
+      "name": "city",
+      "null_percentage": 0,
+      "type": "City",
+      "formula": null
+    },
+    {
+      "name": "occupation",
+      "null_percentage": 0,
+      "type": "Stock Industry",
+      "formula": null
+    },
+    {
+      "name": "hobbies",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "Football",
+        "Music",
+        "Dancing",
+        "Movies",
+        "Reading",
+        "Cooking",
+        "Traveling",
+        "Fashion",
+        "Photography",
+        "Blogging",
+        "Gaming",
+        "Sports",
+        "Painting",
+        "Fishing",
+        "Gardening",
+        "Crafting",
+        "Fitness",
+        "Hiking",
+        "Religion",
+        "Volunteering"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    }
+  ]
+}
