@@ -11,6 +11,8 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        colorProperty: '#876445',
+        colorValue: '#025955',
       },
       fontFamily: {
         trebuchetMs: ['Trebuchet MS'],

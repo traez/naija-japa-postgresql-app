@@ -2,20 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 
+320, 640px, 1280px (Trae Best Practice)
+640px, 768px, 1024px, 1280px, 1536px (Tailwind Default - sm, md, lg, xl, 2xl)
+
+refer to trams-africa-ride-booking-dashboard for any min-h-screen, flex-grow issues
+
+NaijaAustralia.tsx
+
+naijaaustralia.tsx
+*/
+
+* {
+  utline: 1px solid black;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  --property-color: brown;       /* Color for property labels */
+  --value-color: #035f03;        /* Dark green color for values */
 }
