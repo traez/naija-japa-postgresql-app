@@ -1,9 +1,9 @@
-import data from "@/lib/data100australia.json";
+import data from "@/lib/data100canada.json";
 
-const NaijaAustralia = () => {
+const NaijaCanada = () => {
   return (
     <>
-      <div className="text-xl font-semibold mb-4">Nigerians in Australia</div>
+      <div className="text-xl font-semibold mb-4">Nigerians in Canada</div>
       <section className="grid grid-cols-[repeat(auto-fit,_minmax(165px,_1fr))] gap-4">
       {data.map((item, index) => (
           <article
@@ -62,4 +62,4 @@ const NaijaAustralia = () => {
   );
 };
 
-export default NaijaAustralia;
+export default NaijaCanada;

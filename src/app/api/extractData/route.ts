@@ -14,6 +14,13 @@ export async function GET() {
     const jsonData = JSON.parse(data);
 
     // Extract the first 20 items
+  /*   
+ 0, 100
+ 100, 200
+ 200, 300
+ 300, 400
+  400, 500
+  */
     const first100Items = jsonData.slice(400, 500);
 
     // Write the extracted data to a new file

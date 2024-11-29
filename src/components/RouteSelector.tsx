@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 const routes = [
   { path: "/", label: "Home" },
   { path: "/naijaaustralia", label: "Nigerians in Australia" },
-  { path: "/f1containerq", label: "F1 Container Queries" },
-  { path: "/f2subgrid", label: "F2 Subgrid" },
+  { path: "/naijacanada", label: "Nigerians in Canada" },
+  { path: "/naijasouthafrica", label: "Nigerians in South Africa" },
+  { path: "/naijauk", label: "Nigerians in UK" },
+  { path: "/naijaus", label: "Nigerians in US" },
 ];
 
 export default function RouteSelector() {
