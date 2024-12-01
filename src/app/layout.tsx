@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Toaster } from "sonner";
+import StateProvider from "@/lib/StateProvider";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -14,12 +16,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased font-trebuchetMs flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <StateProvider>
+      <html lang="en">
+        <body className="antialiased font-trebuchetMs flex flex-col min-h-screen">
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+          <Toaster position="top-center" />
+        </body>
+      </html>
+    </StateProvider>
   );
 }
