@@ -1,11 +1,32 @@
-import data from "@/lib/data100canada.json";
+"use client";
+import { useContext } from "react";
+import { StateContext } from "@/lib/StateProvider";
+//import data from "@/lib/data100canada.json";
 
 export default function NaijaCanada() {
+  const { s4data, loading } = useContext(StateContext)!;
+
+  if (loading) {
+    return (
+      <div className="text-xl font-semibold my-4 px-4">
+        Loading Nigerians in Canada...
+      </div>
+    );
+  }
+
+  if (!s4data.s4canada.length) {
+    return (
+      <div className="text-xl font-semibold my-4 px-4">
+        No data available for Nigerians in Canada.
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="text-xl font-semibold my-4 px-4">Nigerians in Canada</div>
       <section className="grid grid-cols-[repeat(auto-fit,_minmax(165px,_1fr))] gap-4">
-        {data.map((item, index) => (
+        {s4data.s4canada.map((item, index) => (
           <article
             key={item.user_id || index}
             className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all"

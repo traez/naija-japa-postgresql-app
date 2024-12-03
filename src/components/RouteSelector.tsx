@@ -9,6 +9,7 @@ const routes = [
   { path: "/naijasouthafrica", label: "Nigerians in South Africa" },
   { path: "/naijauk", label: "Nigerians in UK" },
   { path: "/naijaus", label: "Nigerians in US" },
+  { path: "/filter", label: "Filter Queries" },
 ];
 
 export default function RouteSelector() {
