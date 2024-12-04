@@ -2,6 +2,12 @@
 import { useState } from "react";
 import FilterAge from "./FilterAge";
 import FilterSex from "./FilterSex";
+import FilterMarital from "@/components/FilterMarital";
+import FilterChildren from "@/components/FilterChildren";
+import FilterLanguages from "@/components/FilterLanguages";
+import FilterReligion from "@/components/FilterReligion";
+import FilterYear from "@/components/FilterYear";
+import FilterCity from "@/components/FilterCity";
 
 const Filter = () => {
   const [selectedFilter, setSelectedFilter] = useState<string>("");
@@ -22,12 +28,24 @@ const Filter = () => {
           <option value="">Select a filter</option>
           <option value="age">Age</option>
           <option value="sex">Gender</option>
+          <option value="maritalStatus">Marital Status</option>
+          <option value="numberOfChildren">Number of Children</option>
+          <option value="languagesSpoken">Languages Spoken</option>
+          <option value="religion">Religion</option>
+          <option value="japaYear">Japa Year</option>
+          <option value="city">City</option>
         </select>
       </h1>
 
       <div>
         {selectedFilter === "age" && <FilterAge />}
         {selectedFilter === "sex" && <FilterSex />}
+        {selectedFilter === "maritalStatus" && <FilterMarital />}
+        {selectedFilter === "numberOfChildren" && <FilterChildren />}
+        {selectedFilter === "languagesSpoken" && <FilterLanguages />}
+        {selectedFilter === "religion" && <FilterReligion />}
+        {selectedFilter === "japaYear" && <FilterYear />}
+        {selectedFilter === "city" && <FilterCity />}
       </div>
     </div>
   );

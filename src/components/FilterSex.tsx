@@ -55,7 +55,7 @@ const FilterSex = () => {
           id="sex-select"
           value={selectedSex}
           onChange={handleSexChange}
-          className="block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          className="block min-w-[310px] max-w-[620px] px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
         >
           <option value="">Select a gender</option>
           <option value="male">Male</option>

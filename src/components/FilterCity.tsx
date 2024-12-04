@@ -3,18 +3,18 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { naijaJapaType } from "@/lib/Types";
 
-const FilterAge = () => {
-  const [selectedAge, setSelectedAge] = useState<string>("");
+const FilterCity = () => {
+  const [selectedCity, setSelectedCity] = useState<string>("");
   const [filteredData, setFilteredData] = useState<naijaJapaType[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const handleAgeChange = async (
+  const handleCityChange = async (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    const age = event.target.value;
-    setSelectedAge(age);
+    const city = event.target.value;
+    setSelectedCity(city);
 
-    if (age) {
+    if (city) {
       setLoading(true);
       try {
         const tables = [
@@ -25,7 +25,7 @@ const FilterAge = () => {
           "s4us",
         ];
         const queries = tables.map((table) =>
-          supabase.from(table).select("*").eq("age", parseInt(age))
+          supabase.from(table).select("*").eq("city", city)
         );
 
         const results = await Promise.all(queries);
@@ -46,21 +46,122 @@ const FilterAge = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="mb-6">
         <label
-          htmlFor="age-select"
+          htmlFor="city-select"
           className="block text-sm font-medium text-gray-700 mb-2"
         >
-          Select Age
+          Select a City
         </label>
         <select
-          id="age-select"
-          value={selectedAge}
-          onChange={handleAgeChange}
+          id="city-select"
+          value={selectedCity}
+          onChange={handleCityChange}
           className="block min-w-[310px] max-w-[620px] px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
         >
-          <option value="">Select an age</option>
-          {Array.from({ length: 43 }, (_, i) => i + 18).map((age) => (
-            <option key={age} value={age}>
-              {age}
+          <option value="">Select a city</option>
+          {[
+            "Johannesburg",
+            "Pretoria",
+            "Cape Town",
+            "Accra",
+            "Kumasi",
+            "Nairobi",
+            "Addis Ababa",
+            "Kigali",
+            "Casablanca",
+            "Dakar",
+            "Abidjan",
+            "Bamako",
+            "Cairo",
+            "Kampala",
+            "Luanda",
+            "Houston",
+            "Dallas",
+            "Atlanta",
+            "New York City",
+            "Chicago",
+            "Baltimore",
+            "Washington DC",
+            "Los Angeles",
+            "Minneapolis",
+            "Toronto",
+            "Ottawa",
+            "Vancouver",
+            "Calgary",
+            "Winnipeg",
+            "Montreal",
+            "London",
+            "Manchester",
+            "Birmingham",
+            "Glasgow",
+            "Leeds",
+            "Liverpool",
+            "Bristol",
+            "Dublin",
+            "Berlin",
+            "Hamburg",
+            "Frankfurt",
+            "Munich",
+            "Amsterdam",
+            "Rotterdam",
+            "Brussels",
+            "Paris",
+            "Lyon",
+            "Madrid",
+            "Barcelona",
+            "Rome",
+            "Milan",
+            "Oslo",
+            "Stockholm",
+            "Copenhagen",
+            "Warsaw",
+            "Dubai",
+            "Abu Dhabi",
+            "Doha",
+            "Riyadh",
+            "Jeddah",
+            "Muscat",
+            "Manama",
+            "Kuwait City",
+            "Guangzhou",
+            "Beijing",
+            "Shanghai",
+            "Tokyo",
+            "New Delhi",
+            "Mumbai",
+            "Bangalore",
+            "Singapore",
+            "Kuala Lumpur",
+            "Jakarta",
+            "Bangkok",
+            "Seoul",
+            "Sydney",
+            "Melbourne",
+            "Brisbane",
+            "Perth",
+            "Canberra",
+            "Auckland",
+            "Wellington",
+            "São Paulo",
+            "Rio de Janeiro",
+            "Buenos Aires",
+            "Lima",
+            "Bogotá",
+            "Kingston",
+            "Port of Spain",
+            "Bridgetown",
+            "Nassau",
+            "Panama City",
+            "San José",
+            "Istanbul",
+            "Ankara",
+            "Tel Aviv",
+            "Athens",
+            "Zurich",
+            "Vienna",
+            "Helsinki",
+          ].map((city) => (
+            <option key={city} value={city}>
+              {city}
             </option>
           ))}
         </select>
@@ -68,10 +169,10 @@ const FilterAge = () => {
 
       {loading && <p>Loading...</p>}
 
-      {selectedAge && !loading && (
+      {selectedCity && !loading && (
         <div className="mb-4">
           <h2 className="text-xl font-semibold">
-            Nigerians aged {selectedAge}: {filteredData.length} results
+            Nigerians in {selectedCity}: {filteredData.length} results
           </h2>
         </div>
       )}
@@ -104,7 +205,8 @@ const FilterAge = () => {
               <span className="text-colorValue">{item.languages_spoken}</span>
             </p>
             <p className="text-colorProperty mb-1">
-              Religion: <span className="text-colorValue">{item.religion}</span>
+              Religion:{" "}
+              <span className="text-colorValue">{item.religion}</span>
             </p>
             <p className="text-colorProperty mb-1">
               Year of Moving (Japa Year):{" "}
@@ -124,11 +226,13 @@ const FilterAge = () => {
         ))}
       </div>
 
-      {selectedAge && !loading && filteredData.length === 0 && (
-        <p className="text-gray-600">No results found for age {selectedAge}.</p>
+      {selectedCity && !loading && filteredData.length === 0 && (
+        <p className="text-gray-600">
+          No results found for {selectedCity}.
+        </p>
       )}
     </div>
   );
 };
 
-export default FilterAge;
+export default FilterCity;

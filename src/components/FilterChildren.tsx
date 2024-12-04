@@ -3,18 +3,18 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { naijaJapaType } from "@/lib/Types";
 
-const FilterAge = () => {
-  const [selectedAge, setSelectedAge] = useState<string>("");
+const FilterChildren = () => {
+  const [selectedChildren, setSelectedChildren] = useState<number | "">("");
   const [filteredData, setFilteredData] = useState<naijaJapaType[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const handleAgeChange = async (
+  const handleChildrenChange = async (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    const age = event.target.value;
-    setSelectedAge(age);
+    const numberOfChildren = event.target.value ? Number(event.target.value) : "";
+    setSelectedChildren(numberOfChildren);
 
-    if (age) {
+    if (numberOfChildren !== "") {
       setLoading(true);
       try {
         const tables = [
@@ -25,7 +25,7 @@ const FilterAge = () => {
           "s4us",
         ];
         const queries = tables.map((table) =>
-          supabase.from(table).select("*").eq("age", parseInt(age))
+          supabase.from(table).select("*").eq("number_of_children", numberOfChildren)
         );
 
         const results = await Promise.all(queries);
@@ -46,21 +46,21 @@ const FilterAge = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="mb-6">
         <label
-          htmlFor="age-select"
+          htmlFor="number-of-children-select"
           className="block text-sm font-medium text-gray-700 mb-2"
         >
-          Select Age
+          Select Number of Children
         </label>
         <select
-          id="age-select"
-          value={selectedAge}
-          onChange={handleAgeChange}
+          id="number-of-children-select"
+          value={selectedChildren}
+          onChange={handleChildrenChange}
           className="block min-w-[310px] max-w-[620px] px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
         >
-          <option value="">Select an age</option>
-          {Array.from({ length: 43 }, (_, i) => i + 18).map((age) => (
-            <option key={age} value={age}>
-              {age}
+          <option value="">Select a number</option>
+          {Array.from({ length: 7 }, (_, index) => (
+            <option key={index} value={index}>
+              {index}
             </option>
           ))}
         </select>
@@ -68,10 +68,12 @@ const FilterAge = () => {
 
       {loading && <p>Loading...</p>}
 
-      {selectedAge && !loading && (
+      {selectedChildren !== "" && !loading && (
         <div className="mb-4">
           <h2 className="text-xl font-semibold">
-            Nigerians aged {selectedAge}: {filteredData.length} results
+            Nigerians with {selectedChildren}{" "}
+            {selectedChildren === 1 ? "child" : "children"}:{" "}
+            {filteredData.length} results
           </h2>
         </div>
       )}
@@ -104,7 +106,8 @@ const FilterAge = () => {
               <span className="text-colorValue">{item.languages_spoken}</span>
             </p>
             <p className="text-colorProperty mb-1">
-              Religion: <span className="text-colorValue">{item.religion}</span>
+              Religion:{" "}
+              <span className="text-colorValue">{item.religion}</span>
             </p>
             <p className="text-colorProperty mb-1">
               Year of Moving (Japa Year):{" "}
@@ -124,11 +127,14 @@ const FilterAge = () => {
         ))}
       </div>
 
-      {selectedAge && !loading && filteredData.length === 0 && (
-        <p className="text-gray-600">No results found for age {selectedAge}.</p>
+      {selectedChildren !== "" && !loading && filteredData.length === 0 && (
+        <p className="text-gray-600">
+          No results found for {selectedChildren}{" "}
+          {selectedChildren === 1 ? "child" : "children"}.
+        </p>
       )}
     </div>
   );
 };
 
-export default FilterAge;
+export default FilterChildren;

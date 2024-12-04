@@ -723,7 +723,7 @@
       "name": "japa_year",
       "null_percentage": 0,
       "type": "Number",
-      "min": 1982,
+      "min": 2006,
       "max": 2024,
       "decimals": 0,
       "formula": null
