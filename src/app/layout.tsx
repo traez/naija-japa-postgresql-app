@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Toaster } from "sonner";
 import StateProvider from "@/lib/StateProvider";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -22,7 +21,6 @@ export default function RootLayout({
           <Header />
           <main className="flex-grow">{children}</main>
           <Footer />
-          <Toaster position="top-center" />
         </body>
       </html>
     </StateProvider>

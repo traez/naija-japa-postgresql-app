@@ -1,4 +1,4 @@
-# Nextjs Fullstack App with PostgreSQL database powered by Supabase
+# Naija Japa PostgreSQL App
 
 To enhance my full-stack development skills, I am transitioning from using non-relational databases (MongoDB) to relational databases (PostgreSQL, MySQL), in alignment with industry best practices.
 
@@ -20,7 +20,7 @@ To enhance my full-stack development skills, I am transitioning from using non-r
 
 ### The Challenge/User Stories
 
-The challenge for this project involved creating a dynamic product management system using Supabase as the backend to store and retrieve product data. The user stories included allowing users to create new products with a name and description, view a list of existing products from the database, and perform CRUD (Create, Read, Update, Delete) operations on individual products. Specifically, users can add new products, edit product details, and delete products, with all interactions being reflected in real-time on the frontend. A smooth user experience is ensured through the use of state management and the Supabase API for seamless integration with the database. Additionally, error handling and feedback are incorporated using toast notifications to inform users of the success or failure of their actions.
+The challenge for this project revolves around building a comprehensive filtering and display system for Nigerian users based on various attributes such as age, gender, marital status, city, religion, and more. Users are able to filter individuals from different countries (e.g., Canada, South Africa, UK, etc.), with the application dynamically fetching data based on the selected filter criteria. Key challenges include managing asynchronous data fetching from multiple Supabase tables, ensuring a seamless user experience with loading states, and handling edge cases where no data is found. Additionally, integrating and updating multiple filter components based on user selection requires proper state management and efficient rendering. The project aims to provide an intuitive interface for exploring detailed profiles of Nigerians abroad while ensuring optimal performance and user interaction.
 
 ### Screenshot
 
@@ -28,8 +28,8 @@ The challenge for this project involved creating a dynamic product management sy
 
 ### Links
 
-- Solution URL: [https://github.com/traez/supabase-postgresql-crud](https://github.com/traez/supabase-postgresql-crud)
-- Live Site URL: [https://supabase-postgresql-crud.vercel.app/](https://supabase-postgresql-crud.vercel.app/)
+- Solution URL: [https://github.com/traez/naija-japa-postgresql-app](https://github.com/traez/naija-japa-postgresql-app)
+- Live Site URL: [https://naija-japa-postgresql-app.vercel.app/](https://naija-japa-postgresql-app.vercel.app/)
 
 ## My process
 
@@ -45,23 +45,26 @@ The challenge for this project involved creating a dynamic product management sy
 - Nodejs      
 - Supabase    
 - PostgreSQL       
-- Sonner  
 - Tailwind CSS      
 
 ### What I learned
    
-- **Hybrid Approach: SQL and NoSQL Integration for Performance and Scalability**  
-A hybrid approach combining SQL and NoSQL can optimize both performance and scalability. SQL serves as the primary, consistent source of truth for core data, ensuring data integrity and structured relationships. Meanwhile, specific data is mirrored in NoSQL for rapid access and flexibility. NoSQL excels in handling high-speed reads, caching, and unstructured data, making it ideal for features like activity feeds, real-time analytics, and high-traffic data caching. By strategically syncing SQL and NoSQL, applications can benefit from both long-term reliability and scalability for dynamic, user-facing features.        
-- **Upcoming Changes to Supabase API Keys**  
-Supabase will soon transition from using anon and service_role API keys to publishable and secret API keys. However, as of November 15, this change has not yet been implemented when setting up the project.  
-- **Secure Database Access via Supabase Authentication Keys**  
-You don’t need to use the database password directly in your app because Supabase provides authentication keys (Anon and Service Role) that securely access the database through the Supabase API. This design helps keep the database secure while still allowing public access for safe operations (via the Anon key) and controlled access to sensitive operations (via the Service Role key).  
-- **Supabase Free Plan Limitations**  
-Under the Supabase Free plan, you can have a maximum of 2 active projects at any given time. Projects are paused after 1 week of inactivity but can be manually paused and unpaused. Hacks, such as cron jobs, exist to bypass project pausing. A project that has been paused for over 90 days cannot be restored through the dashboard. However, the data remains intact and can be downloaded as a backup. Restarting a paused project only takes a few minutes. There is no specific time limit for using the Free plan, as long as you comply with the free-tier limits (e.g., 2 active projects, 1-week inactivity pause).   
-- **Amazon RDS Free Tier: 12-Month Limitations and Hidden Charges**  
-In contrast, the Amazon RDS Free Tier (which i used for MySQL) benefits are available only for 12 months after signing up for AWS. Additionally, they tend to charge monthly with hidden costs, as you must sign up with a debit card (similar to Google’s approach). 
-- **Direct Database Interaction with Supabase SDK in Next.js**  
-In a Next.js app using the Supabase SDK, CRUD functionality can bypass traditional API routes or server actions. The SDK allows direct interaction with the database via client-side or server-side calls. This is secure when used correctly with Supabase's built-in features, such as Row-Level Security (RLS) and token-based authentication, which enforce access control directly at the database level. This eliminates the need for custom API layers while maintaining security, especially in apps designed to leverage Supabase's real-time capabilities and client-friendly architecture.  
+- **Exploring Mockaroo for Data Generation**  
+I used `mockaroo.com` as an alternative to `mockaron.com` for generating mock data. Mockaroo provided a more customizable and versatile solution for creating realistic datasets that helped in testing my application.  
+- **Using Route Handlers to Transfer Data Between Next.js Files**  
+I learned how to use a Route Handler to extract and write data from one Next.js file to another. This functionality allows for seamless data flow between components and APIs, improving the structure and organization of my Next.js project.  
+- **Using Postman and Supabase REST API**  
+I learned how to use Postman and the Supabase REST API to populate a table in Supabase. This hands-on approach helped me understand how to interact with Supabase directly for database operations and testing API endpoints efficiently.  
+- **Choosing Between Client-Side and Server-Side Filtering**  
+I learned that choosing between client-side and server-side filtering depends on factors like dataset size, update frequency, and user experience. Client-side filtering, where data is fetched once from Supabase and filtered locally, is efficient for small to medium datasets. It offers faster subsequent operations and reduces server requests but can increase client memory usage and initial load time. Server-side filtering, where data is queried directly from Supabase for each filter operation, is better for large datasets and ensures up-to-date results. However, it adds server load and potential latency. A balanced approach in a Next.js app could involve server-side filtering for larger datasets or frequently updated data while leveraging caching, pagination, or static generation to optimize performance and user experience.    
+- **Supabase and RPC for Raw SQL Queries**  
+I learned that Supabase supports executing raw SQL queries through the RPC (Remote Procedure Call) function. Any SQL query not supported by PostgREST can be accomplished by creating a Postgres function and calling it via the RPC method. However, executing raw SQL queries directly from the client can lead to potential risks, such as SQL injection attacks. Therefore, it's important to secure the database from these threats by using appropriate access controls and policies.  
+- **Using Supabase Client for Direct Updates**  
+I learned that it’s possible to update Supabase directly from the client by using a `supabaseClientComponentClient`. However, this approach can expose the Supabase URL to the client, which could lead to security risks such as unauthorized access. To prevent such issues, I refactored my project to avoid exposing the Supabase URL to the client, preferring to handle updates via server actions or route handlers (API routes), which offer more control.    
+- **Securing Supabase with Row-Level Security (RLS) and Policies**  
+Supabase operates by receiving requests from a client, which means that the Supabase URL will be exposed to the user. However, Supabase provides Row-Level Security (RLS) and policies similar to Google Firestore's Rules to secure data. It's essential to always set up RLS and policies for every table in your Supabase database to protect against unauthorized access.  
+- **Understanding ORMs and Their Benefits**  
+I learned that the essence of an ORM (Object-Relational Mapper) is to simplify and streamline the interaction between an application and a relational database. ORMs like Prisma, Drizzle, Sequelize, and others abstract away raw SQL queries, allowing developers to interact with the database using their programming language (e.g., JavaScript/TypeScript). Supabase’s ORM-like tool, the Supabase Client, offers a JavaScript/TypeScript API for interacting with PostgreSQL databases, making database queries and data manipulations easier and more developer-friendly.    
 
 ### Continued development
 
