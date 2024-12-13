@@ -2,7 +2,7 @@ name: Ping Supabase to Prevent Pausing
 
 on:
   schedule:
-    - cron: '0 9 * * 1,4' # Runs at 9:00 AM every Monday and Thursday
+    - cron: '25 8 * * 2,5' # Runs at 8:25 AM every Tuesday and Friday
 
 jobs:
   ping:
