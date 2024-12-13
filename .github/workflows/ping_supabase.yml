@@ -2,7 +2,7 @@ name: Ping Supabase to Prevent Pausing
 
 on:
   schedule:
-    - cron: '0 8 * * 2,5'  # Runs at 8:00 AM UTC, which is 9:00 AM WAST (GMT+1) every Tuesday and Friday
+    - cron: '30 8 * * 2,5'  # Runs at 8:30 AM UTC, which is 9:30 AM WAST (GMT+1) every Tuesday and Friday
   workflow_dispatch:  # Allows manual triggering of the workflow
     
 jobs:
@@ -28,5 +28,5 @@ jobs:
           node -e "
           const { createClient } = require('@supabase/supabase-js');
           const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
-          supabase.from('s4australia').select('id').limit(1).then(console.log).catch(console.error);
+          supabase.from('s4australia').select('user_id').limit(1).then(console.log).catch(console.error);
           "
