@@ -2,8 +2,8 @@ name: Ping Supabase to Prevent Pausing
 
 on:
   schedule:
-    - cron: '25 8 * * 2,5' # Runs at 8:25 AM every Tuesday and Friday
-
+    - cron: '30 7 * * 2,5'  # Runs at 7:30 AM UTC, which is 8:30 AM WAST (GMT+1) every Friday
+    
 jobs:
   ping:
     runs-on: ubuntu-latest
